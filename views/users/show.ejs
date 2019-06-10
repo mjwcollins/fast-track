@@ -16,12 +16,12 @@
     <% if(user) { %>
         <div class="user-content">
             <% if(user.activeFast.name === 'none') { %>
-                <a href="/fasts/new">add a fast</a>
+                <a href="/fasts/new">Add a Fast!!</a>
             <% } else { %>
                 <div class="view-panel">
                     <ul class="active-fast">
                         <% if(user.activeFast.foods.length === 0) { %>
-                            <p>add a food</p>
+                            <div class="no-fasts"><p>Add some foods!!</p></div>
                         <% } else { %>
                             <% user.activeFast.foods.forEach(food => { %>
                                 <li><%= food %>
@@ -42,7 +42,7 @@
             <div class="view-panel">
                 <ul class="prev-fasts">
                     <% if(user.prevFasts.length === 0) { %>
-                        <p>You have no previous fasts</p>
+                        <div class="no-fasts"><p>You don't have any fasts tracked yet...</p></div>
                     <% } else { %>
                         <% user.prevFasts.forEach(fast => { %>
                             <li><%= fast.name %></li>

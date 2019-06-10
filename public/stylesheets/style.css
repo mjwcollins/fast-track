@@ -101,6 +101,18 @@ li {
   list-style: none;
 }
 
+a {
+  color: white;
+  text-shadow: 2px 2px #3b2982;
+  font-size: 30px;
+}
+
+.no-fasts {
+  color: white;
+  text-shadow: 2px 2px #3b2982;
+  font-size: 15px;
+}
+
 .active-fast, .prev-fasts {
   border: 10px solid #3b2982;
   padding: 32px;
