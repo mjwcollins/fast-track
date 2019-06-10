@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% if(user) { %>
+        <div class="user-content">
+            <% if(user.activeFast.name === 'none') { %>
+                <a href="/fasts/new">add a fast</a>
+            <% } else { %>
+                <div class="view-panel">
+                    <ul class="active-fast">
+                        <% if(user.activeFast.foods.length === 0) { %>
+                            <p>add a food</p>
+                        <% } else { %>
+                            <% user.activeFast.foods.forEach(food => { %>
+                                <li><%= food %>
+                                    <form action="/users/<%= food %>?_method=DELETE" method="POST">
+                                        <input type="submit" value="X">
+                                    </form>
+                                </li>
+                            <% }) %>
+                        <% } %>
+                    </ul>
+                    <form action="/users?_method=PUT" method="POST">
+                        <input type="text" placeholder="food name" name="food">
+                        <input type="submit">
+                    </form>
+                </div>
+            <% } %>
+    
+            <div class="view-panel">
+                <ul class="prev-fasts">
+                    <% if(user.prevFasts.length === 0) { %>
+                        <p>You have no previous fasts</p>
+                    <% } else { %>
+                        <% user.prevFasts.forEach(fast => { %>
+                            <li><%= fast.name %></li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    <% } else { %>
+        <script>location.href = '/auth/google'</script>
+    <% } %>
+
+</body>
+
+</html>
